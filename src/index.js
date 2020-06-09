@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import SeasonDisplay from './SeasonDisplay'
 import Loader from './Loader'
+import useLocation from './useLocation'
 
 const App = () => {
+
+    const [lat, errorMsg] = useLocation()
 
     let content 
     if(errorMsg) {
