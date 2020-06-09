@@ -5,20 +5,10 @@ import Loader from './Loader'
 
 const App = () => {
 
-    const [lat, setLat] = useState(null)
-    const [errorMsg, setErrorMsg] = useState('')
-
-    useEffect(() => {
-        window.navigator.geolocation.getCurrentPosition(
-            position => setLat(position.coords.latitude),
-            err => setErrorMsg(err.message)
-        )
-    }, [])
-
     let content 
-    if( errorMsg ) {
+    if(errorMsg) {
         content = <div>Error: {errorMsg}</div>
-    } else if ( lat ) {
+    } else if (lat) {
         content = <SeasonDisplay lat={lat} />
     } else {
         content = <Loader message="Please accept location request to get your season"/>
